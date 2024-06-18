@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+   <title>Clocker</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="styles.css">
+</head>
+
+<body onload="firstLoad()">
+
+
+   <header class="hide">
+      <!-- New icon 📝-->
+      <!-- <h1 id="title">Hey</h1>-->
+       <a href="?" >Home</a> <!-- navigator.clipboard.writeText('YES!'); -->
+      <!-- Copy Link 🔗 🕖 🕒📜-->
+   </header>
+   <script>
+      let header = document.querySelector("header");
+      
+      function toggle_navbar(el)
+      {
+         
+         if (header.classList.contains("hide")) {
+            el.innerHTML = "Hide";
+            header.classList.remove("hide");
+         } else {
+            el.innerHTML = "Show";
+            header.classList.add("hide");    
+         }
+      }
+   </script>
+   <div id="toggle_navbar" onclick="toggle_navbar(this)">Show</div>
+   </div>
+
+   <svg id="clock" xmlns="http://www.w3.org/2000/svg"></svg>
+   <script src="request.js"></script>
+   <script src="script.js"></script>
+   
+
+
+   <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content message">
+         <div class="modal-headerfooter">
+            <span class="close">&times;</span>
+            <h2 class="modal-title"></h2>
+         </div>
+         <div class="modal-body">
+         </div>
+      </div>
+      <div class="modal-content form">
+         <div class="modal-headerfooter">
+            <span class="close">&times;</span>
+            <h2 class="modal-title">Title</h2>
+         </div>
+         <form>
+            <!--https://www.sanwebe.com/2014/08/css-html-forms-designs-->
+            <ul class="form-style-1">
+               <li><label>Title</label>
+                  <div>
+                     <input type="text" name="title" class="field-long" required autocomplete="off" autofocus="true" />
+
+                  </div>
+                  <script>
+                     function change(el) {
+                        document.querySelector('[name="color"]').value = el.dataset.color;
+                     }
+
+                  </script>
+                  <div id="color_picker">
+                     <div data-color="#000000" style="background-color: #000000;" onclick="change(this)"></div>
+                     <div data-color="#ee0000" style="background-color: #ee0000;" onclick="change(this)"></div>
+                     <div data-color="#ff8800" style="background-color: #ff8800;" onclick="change(this)"></div>
+                     <div data-color="#6200ff" style="background-color: #6200ff;" onclick="change(this)"></div>
+                     <div data-color="#0084ff" style="background-color: #0084ff;" onclick="change(this)"></div>
+                     <div data-color="#42b106" style="background-color: #42b106;" onclick="change(this)"></div>
+
+                     <input type="color" name="color" value="#ee0000">
+                  </div>
+               </li>
+
+               <li>
+                  <!-- <label>Color:</label> -->
+                  <!-- <select name="type_ID" value="1">
+                     <option value="1">Regular</option>
+                     <option value="2">Sleep</option>
+                  </select> -->
+
+                  <input type="hidden" name="action" value="" />
+                  <input type="hidden" name="event_ID" value="" />
+                  <!--<input type="button" value="New category" class="newCategory">-->
+               </li>
+               <input type="submit" class="formSubmit" value="Submit" /><input type="button"
+                  class="formDelete white noSelect" value="Delete">
+               <table>
+                  <tr>
+                     <td>
+
+                     </td>
+                     <td>
+
+                     </td>
+                  </tr>
+               </table>
+
+               <table>
+                  <tr>
+                     <td>
+                        <li>
+
+                           <label for="dateStart" class="field-divided" placeholder="First">From:</label>
+
+                           <input type="datetime-local" id="dateStart" name="dateStart" value="" min="" required
+                              class="field-divided" placeholder="dd/mm/yyyy">
+                        </li>
+                     </td>
+                     <td>
+                        <li><label for="dateEnd" class="field-divided" placeholder="Second">To:</label>
+
+                           <input type="datetime-local" id="dateEnd" name="dateEnd" value="" min="" required
+                              class="field-divided" placeholder="Second">
+                        </li>
+                     </td>
+                  </tr>
+               </table>
+               <li>
+                  <label>Description</label>
+                  
+                  <textarea name="description" id="field5" class="field-long field-textarea"
+                     autocomplete="off"></textarea>
+               </li>
+
+
+            </ul>
+            <!--<input type="hidden" autofocus="true" />-->
+         </form>
+         <div class="modal-headerfooter">
+         </div>
+      </div>
+   </div>
+
+</body>
+
+</html>
