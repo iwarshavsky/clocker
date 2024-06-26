@@ -35,6 +35,7 @@
     overscroll-behavior-y: contain;
     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
             background-color: lightslategrey;
+    touch-action: none;
  }
 
  path.baseHourSelectedStart {
