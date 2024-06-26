@@ -1,0 +1,513 @@
+.event {
+    transition: 0.5s;
+ }
+
+ .hourRing {
+    cursor: grab;
+ }
+
+ .hourRing.rotate,
+ body.rotate {
+    cursor: grabbing;
+ }
+
+ svg {
+    user-select: none;
+ }
+
+ .hide {
+    visibility: hidden;
+    opacity: 0;
+ }
+
+ .updatable_group {
+    user-select: none;
+ }
+
+ .blurRotation {
+    /*transition: 1s;*/
+    filter: blur(3px);
+ }
+
+ body {
+    margin: 0px;
+    text-align: center;
+    overscroll-behavior-y: contain;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            background-color: lightslategrey;
+ }
+
+ path.baseHourSelectedStart {
+    fill: red;
+
+ }
+
+ path.baseHourSelectedEnd {
+    fill: green;
+
+ }
+
+ .pathEvent:hover {
+
+    stroke: black;
+    stroke-width: 3px;
+    stroke-opacity: 0.5;
+    cursor: pointer;
+ }
+
+
+ /*foreignObject */
+ .noSelect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                             supported by Chrome, Opera and Firefox */
+ }
+
+ /* The Modal (background) */
+ .modal {
+
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 50px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    -webkit-animation-name: animatemodal;
+    -webkit-animation-duration: 0.7s;
+    animation-name: animatemodal;
+    animation-duration: 0.7s;
+
+ }
+
+ /* Modal Content */
+ .modal-content {
+    display: none;
+    position: relative;
+    word-wrap: break-word;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 60vw;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.7s;
+    animation-name: animatetop;
+    animation-duration: 0.7s
+ }
+
+ /* .modal-content.opened {
+    display: inherit;
+ } */
+ .modal-headerfooter {
+    padding: 2px 16px;
+    min-height: 10px;
+    background-color: rgba(29, 68, 100, 0.671);
+ }
+
+ .modal-headerfooter.modalError {
+    background-color: #cf0f01;
+    color: white;
+ }
+
+ .modal-headerfooter.modalSuccess {
+    background-color: #5cb85c;
+    color: white;
+ }
+
+ .modal-title {
+    color: white;
+    text-align: left;
+    padding-left: 40px;
+    /* padding-top: 25px; */
+ }
+
+ /* Add Animation */
+ @-webkit-keyframes animatetop {
+    from {
+       top: -300px;
+       opacity: 0
+    }
+
+    to {
+       top: 0;
+       opacity: 1
+    }
+ }
+
+ @keyframes animatetop {
+    from {
+       top: -300px;
+       opacity: 0
+    }
+
+    to {
+       top: 0;
+       opacity: 1
+    }
+ }
+
+ @-webkit-keyframes animatemodal {
+    from {
+       background-color: rgba(0, 0, 0, 0)
+    }
+
+    to {
+       background-color: rgba(0, 0, 0, 0.4)
+    }
+ }
+
+ @keyframes animatemodal {
+    from {
+       background-color: rgba(0, 0, 0, 0)
+    }
+
+    to {
+       background-color: rgba(0, 0, 0, 0.4)
+    }
+ }
+
+ /* The Close Button */
+ .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+ }
+
+ .close:hover,
+ .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+ }
+
+
+
+ .modal-body {
+    padding: 2px 16px;
+ }
+
+ .clockEventTitle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: red;
+    vertical-align: middle;
+    overflow: hidden;
+    /* Internet Explorer 10 */
+    display: -ms-flexbox;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+
+    /* Safari, Opera, and Chrome */
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+
+    /* W3C */
+    display: box;
+    box-pack: center;
+    box-align: center;
+ }
+
+ .clockEventTitle.small {
+    font-size: 3px;
+ }
+
+ .clockEventTitle.normal {
+    font-size: 10px;
+ }
+
+
+ .clockEventTitle.rotate {
+    -ms-transform: rotate(180deg);
+    /* IE 9 */
+    -webkit-transform: rotate(180deg);
+    /* Safari prior 9.0 */
+    transform: rotate(180deg);
+    /* Standard syntax */
+ }
+
+ .goToPresentButtonClock {
+    opacity: 0.2;
+
+ }
+
+ .goToPresentButtonClock:hover {
+    opacity: 0.7;
+    cursor: pointer;
+    -webkit-animation-name: addEventButtonShow;
+    -webkit-animation-duration: 0.4s;
+    animation-name: addEventButtonShow;
+    animation-duration: 0.2s
+ }
+
+ .goToPresentButtonClockVisible {
+    opacity: 0.2;
+ }
+
+ @-webkit-keyframes addEventButtonShow {
+    from {
+       opacity: 0.2;
+    }
+
+    to {
+       opacity: 0.7;
+    }
+ }
+
+ @keyframes addEventButtonShow {
+    from {
+       opacity: 0.2;
+    }
+
+    to {
+       opacity: 0.7;
+    }
+ }
+
+ @media only screen and (max-width: 600px) {
+
+    .modal {
+       font-size: 75%;
+    }
+
+    .modal-content {
+       width: 100%;
+    }
+ }
+
+
+ .form-style-1 {
+    margin: 10px auto;
+    max-width: 100%;
+    padding: 10px 12px 10px 12px;
+    font: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+ }
+
+ form {
+    text-align: left;
+    width: 100%;
+ }
+
+ .form-style-1 li {
+    padding: 0;
+    display: block;
+    list-style: none;
+    margin: 10px 0 0 0;
+ }
+
+ .form-style-1 label {
+    margin: 0 0 3px 0;
+    padding: 7px;
+    display: inline;
+    font-weight: bold;
+ }
+
+ .form-style-1 input[type=text],
+ .form-style-1 input[type=date],
+ .form-style-1 input[type=datetime],
+ .form-style-1 input[type=number],
+ .form-style-1 input[type=search],
+ .form-style-1 input[type=time],
+ .form-style-1 input[type=url],
+ .form-style-1 input[type=email],
+ textarea,
+ select,
+ input {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    border: 1px solid #BEBEBE;
+    padding: 7px;
+    margin: 0px;
+    resize: none;
+    outline: none;
+ }
+
+ ul {
+    height: 100%;
+ }
+
+ textarea {
+
+    height: 80px;
+ }
+
+ select {
+    width: 40%;
+ }
+
+ button {
+    width: 24%;
+ }
+
+ .form-style-1 input[type=text]:focus,
+ .form-style-1 input[type=date]:focus,
+ .form-style-1 input[type=datetime]:focus,
+ .form-style-1 input[type=number]:focus,
+ .form-style-1 input[type=search]:focus,
+ .form-style-1 input[type=time]:focus,
+ .form-style-1 input[type=url]:focus,
+ .form-style-1 input[type=email]:focus,
+ .form-style-1 textarea:focus,
+ .form-style-1 select:focus {
+    -moz-box-shadow: 0 0 8px #88D5E9;
+    -webkit-box-shadow: 0 0 8px #88D5E9;
+    box-shadow: 0 0 8px #88D5E9;
+    border: 1px solid #88D5E9;
+ }
+
+
+ .form-style-1 .field-long {
+    width: 100%;
+ }
+
+
+ input[type=datetime-local] {
+    width: 95%;
+ }
+
+ .form-style-1 input[type=submit],
+ .form-style-1 input[type=button] {
+    background: #4B99AD;
+    padding: 8px 15px 8px 15px;
+    border: none;
+    color: #fff;
+ }
+
+ .form-style-1 input[type=submit]:hover,
+ .form-style-1 input[type=button]:hover {
+    background: #4691A4;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+ }
+
+
+
+
+
+
+ .form-style-1 .required {
+    color: red;
+ }
+
+ input[type=submit] {
+    height: 3em;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+ }
+
+ label {
+    display: block;
+    width: 49%;
+    margin: 0;
+    padding-bottom: 10px;
+ }
+
+ table {
+    width: 100%;
+ }
+
+ input[type=text] {
+    font-size: 2em;
+ }
+
+ svg {
+
+    vertical-align: middle;
+ }
+
+ .formDelete {
+    float: right;
+    width: auto;
+    font-size: 0.75em;
+ }
+
+ td {
+    width: 50%;
+ }
+
+ .formDelete.white:hover {
+    color: #921919;
+    text-shadow: red;
+    text-decoration: underline;
+ }
+
+ #color_picker {
+    display: flex;
+    justify-content: right;
+ }
+
+ #color_picker * {
+    height: 30px;
+    width: 30px;
+    border-radius: 3px;
+    margin: 3px;
+    cursor: grab;
+ }
+
+ #color_picker input {
+    cursor: auto;
+    padding: 0px;
+ }
+
+ #about {
+    top: 0px;
+    transition: 1s;
+    background-color: rgb(201, 201, 201);
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* padding: 50px; */
+    padding-top: 50px;
+ }
+
+ #toggle_about {
+    position:fixed;
+    top: 0px;
+    right: 0px;
+    user-select: none;
+    padding: 6px;
+border: 1px solid black;
+margin: 2px;
+border-radius: 7px;
+background: white;
+width: 40px;
+opacity: 0.7;
+font-size: small;
+ }
